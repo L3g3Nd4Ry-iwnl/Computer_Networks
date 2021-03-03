@@ -10,7 +10,7 @@ This repository contains my work related to the Computer Networks course in my c
 
 ### TCP
 TCP - Transmission Control Protocol
-Used to send data which are to be in order, with no loss of data. Internet applications like `WWW, e-mail, FTP, Secure Shell` uses TCP. It is a **connectioned** protocol
+Used to send data which are to be in order, with no loss of data. Internet applications like `WWW, e-mail, FTP, Secure Shell` uses TCP. It is a **connection-oriented** protocol
 
 #### Processes in TCP Server and TCP Client
 | Server | Client |
@@ -114,11 +114,13 @@ server_socket.bind(('127.0.0.1',42069))
 server_socket.recvfrom(1024)
 ```
  
-  Here `socket.recvfrom()` return 2 
+  Here `socket.recvfrom()` return 2 values `(data, address)` where data is the value received from client and address is the `(IP, Port)` *since IPv4* of the sender. 
 
 4. Sending data to client
 ```python
 server_socket.sendto(message,addr)
 ```
 
-  Here
+  Here `socket.sendto()` has 2 parameters `(message, address)` where message needs to be encoded using `encode()` function. The address can be retrieved from the *address* in `recvfrom()`
+  
+  
